@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> <%=title%></title>
+        <link rel="icon" href="../assets/images/fevicon.svg" type="image/x-icon">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <script src="https://kit.fontawesome.com/1498c8fbef.js" crossorigin="anonymous"></script>
+        <script src="../assets/js/index.js"></script>
+        
+    </head>
+    <body>
+       
+        <div class="outer">
+            <div id="heading">
+                <p>Bitsa</p>
+                <p>todo</p>
+            </div>
+            <div class="inner"> 
+                <div class="task_form">
+
+                    <!-- -----------------TODO form------------------ -->
+                    <form action="/tasks" method="post" class ="ToDoForm">
+                        <label for="description" >Description:</label>
+                        <input type="text" id="description" name="description" >
+                        <br><br>
+                        
+                        <label for="taskType">Task Type:</label>
+                        <select id="taskType" name="taskType">
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="errands">Errands</option>
+                            <option value="other">Other</option>
+                        </select>
+                        
+                        <label for="date">Date  :</label>
+                        <input type="date" id="date" name="date" >
+                        
+                        <br><br>
+                        
+                        <button type="submit" name = "action" value="Add Task" class="task-button"> Add Task</button>
+                        <button type="submit" name = "action" value="Delete Task" class="task-button">Delete Tasks</button>
+                    </form>
+                </div>               
+              
+                    
+
+                <!-- ------------------task list ----------->
+                <div class="tasks_list">
+                    
+                   
+                    <ul id="list">  
+                        <% for (let i of task_list) { %> 
+                            
+                                
+                            <li>
+                                <div class="task_details">
+                                    <input type="checkbox" id="<%= i._id %>" class="custom-checkbox"  <%= i.checked ? 'checked' : '' %>>
+                                    <span class="task-description">
+                                        <p><%= i.description %></p>
+                                        <span><%= i.taskType %></span>  
+                                    </span>
+                                </div>
+                                 
+                                <div class = "task-date">
+                                    <i class="fa-regular fa-calendar" style="color: #656262;"></i><%= i.date %>
+                                </div>
+                                
+                              
+                            </li>
+                               
+                                
+                            
+                             
+                        <% } %>
+                    </ul>
+                 
+                  
+                        
+                      
+                </div>
+                
+                
+            </div>
+            
+        </div>
+        
+
+    </body>
+</html>
